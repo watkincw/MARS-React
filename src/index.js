@@ -1,16 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import MyApp from './App';
-import { ToDoComponent } from './components/ToDoComponent';
-import MyFuncComponent from './components/MyFuncComponent';
+// import App from './App';
+// import { ToDoComponent } from './components/ToDoComponent';
+// import MyFuncComponent from './components/MyFuncComponent';
+import Demo from './components/Demo';
+import EffectHook from './components/EffectHook';
+import EffectNew from './components/EffectNew';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<MyApp />
-		<ToDoComponent value="James" />
-		<MyFuncComponent name="Mike" age={34} />
+		{/* <App /> */}
+		<Demo />
+		<EffectHook />
+		<EffectNew />
+		{/* <ToDoComponent value="James" /> */}
+		{/* <MyFuncComponent name="Mike" age={34} /> */}
 	</React.StrictMode>,
 	document.getElementById('root')
 );
