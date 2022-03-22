@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+// import { useState } from 'react';
 // import Demo from './components/Demo.js';
 // import StyledDemo from './components/StyledDemo';
 // import EffectHook from './components/EffectHook';
@@ -14,17 +14,17 @@ import { useState } from 'react';
 // import Child1 from './components/passingDataToChildAndParents/Child1';
 // import Child2 from './components/passingDataToChildAndParents/Child2';
 // import TwoWayBind from './components/PassingDataBetweenComponents/TwoWayBind';
-// import Form from './components/SimpleForm/Form';
+import Form from './components/SimpleForm/Form';
 // import DynamicContent from './components/DynamicContent/DynamicContent';
 // import NumberList from './components/DynamicContent/NumberList';
 
-// react-router-dom
-import Home from './components/Navigation/Home';
-import About from './components/Navigation/About';
-import Profile from './components/Navigation/Profile';
-import Error from './components/Navigation/Error';
-import Redirect from './components/Navigation/Redirect';
-import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom';
+// // react-router-dom
+// import Home from './components/Navigation/Home';
+// import About from './components/Navigation/About';
+// import Profile from './components/Navigation/Profile';
+// import Error from './components/Navigation/Error';
+// import Redirect from './components/Navigation/Redirect';
+// import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom';
 
 
 function App() {
@@ -40,10 +40,10 @@ function App() {
 	
 	return (
 		<div className="App">
-			<h1>Hello world from React!</h1>
+			{/* <h1>Hello world from React!</h1> */}
 
 			{/* react-router-dom */}
-			<Router>
+			{/* <Router>
 				<nav>
 					<ul>
 						<Link to='/'>Home Page</Link><br />
@@ -55,11 +55,11 @@ function App() {
 					<Route path='/' element={<Home />} />
 					<Route path='/about' element={<About />} />
 					<Route path='/profile' element={<Profile />} />
-					{/* if targeted route does not exist, show 'Error' component */}
+					if targeted route does not exist, show 'Error' component
 					<Route path='*' element={<Error />} />
 				</Routes>
 				<Redirect />
-			</Router>
+			</Router> */}
 
 			{/* NumbersList component */}
 			{/* <NumberList numbers={numbers} /> */}
@@ -70,7 +70,7 @@ function App() {
 			<br />
 			<button onClick={() => changeUser('userB')}>Switch to user B</button> */}
 
-			{/* <Form /> */}
+			<Form />
 			{/* <TwoWayBind /> */}
 			{/* <Child2 selectedMessage={selectedMessage} /> */}
 			{/* <Child1 setMessage = {setMessage} /> */}

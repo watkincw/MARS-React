@@ -1,126 +1,77 @@
 import React, { useState } from 'react';
+import DisplayData from './DisplayData';
 
-// const values = [...e.target.selectedOptions].map(opt => opt.value);
-// setHobbies(values);
 
 function Form() {
-    let movies = document.getElementById('MoviesID');
-    let reading = document.getElementById('ReadingID');
-    let music = document.getElementById('MusicID');
-
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [age, setAge] = useState('');
     const [address, setAddress] = useState('');
     const [hobbies, setHobbies] = useState([]);
-
-    const handleFirstNameChange = (e) => {
-        setFirstName(e.target.value);
-    }
-    const handleLastNameChange = (e) => {
-        setLastName(e.target.value);
-    }
-    const handleAgeChange = (e) => {
-        setAge(e.target.value);
-    }
-    const handleAddressChange = (e) => {
-        setAddress(e.target.value);
-    }
-
+    
     let hobbiesArr = [];
-    const handleHobbiesChange1 = (e) => {
-        if (movies.checked) {
-            hobbiesArr.push(e.target.value);
-        } else if (!movies.checked) {
-            hobbiesArr = [...hobbiesArr];
-        }
-        console.log(hobbiesArr);
-        setHobbies(hobbiesArr);
-    }
-    const handleHobbiesChange2 = (e) => {
-        if (reading.checked) {
-            hobbiesArr.push(e.target.value);
-        } else if (!reading.checked) {
-            hobbiesArr = [];
-        }
-        console.log(hobbiesArr);
-        setHobbies(hobbiesArr);
-    }
-    const handleHobbiesChange3 = (e) => {
-        if (music.checked) {
-            hobbiesArr.push(e.target.value);
-        } else if (!music.checked) {
-            hobbiesArr = [];
-        }
-        console.log(hobbiesArr);
-        setHobbies(hobbiesArr);
+    const submitBtn = () => {
+        setFirstName(document.getElementById('firstName').value);
+        setLastName(document.getElementById('lastName').value);
+        setAge(document.getElementById('age').value);
+        setAddress(document.getElementById('address').value);
+
+        const options = Array.from(document.getElementById('hobbies').options).filter((option) => {
+            return (option.selected)
+        });
+
+        for (let option of options) {
+            hobbiesArr.push(option.innerText);
+        };
+
+        setHobbies(hobbies.concat(hobbiesArr));
+
+        document.getElementById('DispInputs').style.display = 'block';
     }
 
     return (
         <div>
-            <form>
-                <div>
-                    <h3>First Name: </h3>
-                    <input
-                        onChange={handleFirstNameChange}
-                        value={firstName}
-                        placeholder='First Name'
+            <h1>Enter Info</h1>
+            <div className='Gridcontainer'>
+                <b className='Labelstyle'>First Name: </b>
+                <input className='fields' type='name' id='firstName' />
+                <br />
+
+                <b className='Labelstyle'>Last Name: </b>
+                <input className='fields' type='name' id='lastName' />
+                <br />
+                
+                <b className='Labelstyle'>Age: </b>
+                <input className='fields' type='number' id='age' />
+                <br />
+
+                <b className='Labelstyle'>Address: </b>
+                <input className='fields' type='address' id='address' />
+                <br />
+
+                <b className='Labelstyle'>hobbies: </b>
+                <select id='hobbies' multiple>
+                    <option className='fields' key='movies'>Movies</option>
+                    <option className='fields' key='reading'>Reading</option>
+                    <option className='fields' key='music'>Music</option>
+                    <option className='fields' key='travel'>Travel</option>
+                </select>
+
+                <br />
+                <br />
+
+                <button className='buttonstyle' onClick={submitBtn}>Submit</button>
+
+                <div id='DispInputs' className='SubmissionText' style={{backgroundColor: 'lightblue', display: 'none'}} >
+                    <DisplayData
+                        firstName={firstName}
+                        lastName={lastName}
+                        age={age}
+                        address={address}
+                        hobbies={hobbies}
                     />
                 </div>
-                <div>
-                    <h3>Last Name: </h3>
-                    <input
-                        onChange={handleLastNameChange}
-                        value={lastName}
-                        placeholder='Last Name'
-                    />
-                </div>
-                <div>
-                    <h3>Age: </h3>
-                    <input
-                        type='number'
-                        onChange={handleAgeChange}
-                        value={age}
-                        placeholder='Age'
-                    />
-                </div>
-                <div>
-                    <h3>Address: </h3>
-                    <input
-                        type='address'
-                        onChange={handleAddressChange}
-                        value={address}
-                        placeholder='Address'
-                    />
-                </div>
-                <div>
-                    <h3>Hobbies: </h3>
-                    <input
-                        type='checkbox'
-                        value='Movies'
-                        id='MoviesID'
-                        onChange={handleHobbiesChange1}
-                        /><span>Movies</span>
-                    <input
-                        type='checkbox'
-                        value='Reading'
-                        id='ReadingID'
-                        onChange={handleHobbiesChange2}
-                        /><span>Reading</span>
-                    <input
-                        type='checkbox'
-                        value='Music'
-                        id='MusicID'
-                        onChange={handleHobbiesChange3}
-                    /><span>Music</span>
-                </div>
-                <br/>
-            </form>
-            <h3>Hobbies: {hobbies}</h3>
-            <h3>First Name: {firstName}</h3>
-            <h3>Last Name: {lastName}</h3>
-            <h3>Age: {age}</h3>
-            <h3>Address: {address}</h3>
+            </div>
         </div>
     );
 }
